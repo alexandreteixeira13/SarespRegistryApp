@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Saresp.Models.Aluno>
+
+@{
+    ViewData["Title"] = "Lista de usuarios";
+}
+
+<p><a class="btn btn-primary" asp-action="CadastrarAluno" asp-controller="Aluno">Cadastrar</a></p>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Telefone)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Serie)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Turma)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.DataNascimento)
+                </th>
+                <th scope="col">
+                    Ação
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Aluno aluno in Model)
+            {
+                <tr>
+                    <td>
+                        @aluno.Id
+                    </td>
+                    <td>
+                        @aluno.Nome
+                    </td>
+                    <td>
+                        @aluno.Email
+                    </td>
+                    <td>
+                        @aluno.Telefone
+                    </td>
+                    <td>
+                        @aluno.Serie
+                    </td>
+                    <td>
+                        @aluno.Turma
+                    </td>
+                    <td>
+                        @aluno.DataNascimento.ToString("dd/MM/yyyy")
+                    </td>
+
+
+                    
+                    <td>
+
+                        <button type="button" class="btn btn-warning">
+                            @Html.ActionLink("Editar", "AtualizarAluno", new { id = aluno.Id })
+                        </button>
+
+
+                        <button type="button" class="btn btn-secondary">
+                            @Html.ActionLink("Detalhes", "Detalhesaluno", new { id = aluno.Id })
+                        </button>
+
+
+                        <button type="button" class="btn btn-danger">
+                            @Html.ActionLink("Excluir", "ExcluirAluno", new { id = aluno.Id }, new { onclick = "Return confirm('Deseja realmente excluir?')" })
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
