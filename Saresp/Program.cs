@@ -8,6 +8,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IAlunoRepository, AlunoRepository>();
 
+builder.Services.AddScoped<IProfessorAplicadorRepository, ProfessorAplicadorRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -8,11 +8,11 @@ namespace Saresp.Controllers
     {
         private IAlunoRepository _alunoRepository;
 
-        public AlunoController (IAlunoRepository alunoRepository)
+        public AlunoController(IAlunoRepository alunoRepository)
         {
             _alunoRepository = alunoRepository;
         }
-        
+
         public IActionResult Index()
         {
             return View(_alunoRepository.ObterTodosAlunos());
@@ -23,11 +23,11 @@ namespace Saresp.Controllers
         {
             return View();
         }
-        
+
         [HttpPost]
         public IActionResult CadastrarAluno(Aluno aluno)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _alunoRepository.Cadastrar(aluno);
             }
